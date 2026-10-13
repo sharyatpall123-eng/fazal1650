@@ -2314,6 +2314,22 @@ export async function createPaymentReceiptPng({
   .green-footer .footer-address {
     display: none !important;
   }
+
+  /* A restrained gold signature under the shop name — receipt only. */
+  .green-footer .footer-credit {
+    margin-top: 4px;
+    padding-top: 5px;
+    min-width: 255px;
+    border-top: 1px solid rgba(230, 203, 139, .53);
+    color: #e6cb8b;
+    font-family: "Noto Naskh Arabic", "Noto Sans Arabic", Tahoma, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: .15px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, .14);
+    white-space: nowrap;
+  }
 </style>
 </head>
 <body>
@@ -2383,6 +2399,7 @@ export async function createPaymentReceiptPng({
 
   <footer class="green-footer">
     <div class="footer-name">فضل د مریو او کرستالو عمده پلورنځی</div>
+    <div class="footer-credit">انجینري او پراختیا: عزیزالله</div>
   </footer>
 
 </div>
@@ -3293,6 +3310,37 @@ export async function createWeeklyDebtReportPng({
     letter-spacing: 2px !important;
   }
 
+  /* Three-tier luxury footer: shop name, reference code, small credit. */
+  .weekly-reference .footer-brand {
+    height: 91px !important;
+    bottom: 3px !important;
+    padding: 2px 14px 5px !important;
+    gap: 1px !important;
+  }
+
+  .weekly-reference .footer-brand .footer-code {
+    font-family: "Roboto", "Noto Sans", Arial, sans-serif !important;
+    font-size: 17px !important;
+    font-weight: 800 !important;
+    line-height: 1.15 !important;
+    letter-spacing: 1.3px !important;
+    color: #fff9ed !important;
+  }
+
+  .weekly-reference .footer-brand .footer-credit {
+    margin-top: 2px !important;
+    padding: 3px 20px 0 !important;
+    border-top: 1px solid rgba(230, 203, 139, .68) !important;
+    color: #f0d99e !important;
+    font-family: "Noto Naskh Arabic", "Noto Sans Arabic", Tahoma, sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    line-height: 1.32 !important;
+    letter-spacing: .15px !important;
+    text-shadow: none !important;
+    white-space: nowrap;
+  }
+
 </style>
 </head>
 
@@ -3383,7 +3431,8 @@ export async function createWeeklyDebtReportPng({
 
   <div class="footer-brand">
     <div style="font-size:30px;font-weight:900">فضل د مریو او کرستالو عمده پلورنځی</div>
-    <div style="font-size:20px;font-weight:700;margin-top:4px">FZL1650</div>
+    <div class="footer-code">FZL1650</div>
+    <div class="footer-credit">انجینري او پراختیا: عزیزالله</div>
   </div>
 
 </div>
