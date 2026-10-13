@@ -2204,6 +2204,116 @@ export async function createPaymentReceiptPng({
     unicode-bidi: isolate !important;
     letter-spacing: 0 !important;
   }
+
+
+  /* ===== SHIRULLAH PREMIUM RECEIPT — BURGUNDY / GOLD ===== */
+  body {
+    background: #f4efe6 !important;
+  }
+
+  .receipt-canvas {
+    background:
+      radial-gradient(circle at 12% 10%, rgba(201,164,92,.14), transparent 28%),
+      linear-gradient(145deg, #fbf7ef 0%, #f1e8d9 100%) !important;
+  }
+
+  .receipt-canvas .receipt-green {
+    background: #fffdf8 !important;
+    border: 3px solid #c9a45c !important;
+    box-shadow:
+      0 26px 54px rgba(84, 28, 44, .22),
+      0 0 0 8px rgba(201, 164, 92, .10) !important;
+  }
+
+  .green-header {
+    background: linear-gradient(120deg, #351018 0%, #541c2c 48%, #762d43 100%) !important;
+    border-bottom: 6px solid #c9a45c !important;
+    border-radius: 0 0 34px 34px !important;
+  }
+
+  .green-header::after {
+    background: rgba(239, 213, 143, .10) !important;
+  }
+
+  .receipt-title,
+  .logo-name,
+  .logo-fallback {
+    color: #ffffff !important;
+  }
+
+  .receipt-subtitle {
+    color: #f6e8c5 !important;
+  }
+
+  .customer-card,
+  .detail-card {
+    border-color: #e2d1aa !important;
+    background: #fffaf1 !important;
+  }
+
+  .label,
+  .detail-label,
+  .balance-label {
+    color: #6c5960 !important;
+  }
+
+  .customer-name,
+  .detail-value {
+    color: #351018 !important;
+  }
+
+  .customer-pill {
+    background: #f2e4bf !important;
+    color: #541c2c !important;
+    border: 1px solid #c9a45c !important;
+  }
+
+  .amount-card {
+    border-color: #c9a45c !important;
+    background: linear-gradient(135deg, #fffaf0 0%, #f6ead0 100%) !important;
+    box-shadow: inset 0 0 0 1px rgba(84, 28, 44, .05) !important;
+  }
+
+  .amount-label,
+  .amount {
+    color: #541c2c !important;
+  }
+
+  .amount-note {
+    color: #7b676d !important;
+  }
+
+  .balance-card {
+    border-color: #c9a45c !important;
+    background: linear-gradient(135deg, #fffdf8 0%, #f2e4bf 100%) !important;
+  }
+
+  .balance-value {
+    color: #541c2c !important;
+  }
+
+  .auto-note {
+    display: none !important;
+  }
+
+  .green-footer {
+    min-height: 112px !important;
+    padding: 22px 34px !important;
+    background: linear-gradient(120deg, #351018 0%, #541c2c 52%, #762d43 100%) !important;
+    border-top: 5px solid #c9a45c !important;
+  }
+
+  .green-footer .footer-name {
+    max-width: 650px !important;
+    color: #fff8e7 !important;
+    font-size: 27px !important;
+    font-weight: 900 !important;
+    line-height: 1.6 !important;
+  }
+
+  .green-footer .footer-address {
+    display: none !important;
+  }
 </style>
 </head>
 <body>
@@ -2219,7 +2329,7 @@ export async function createPaymentReceiptPng({
           ? `<img class="header-logo" src="${escapeHtml(companyLogo)}" alt="Logo" />`
           : `<div class="logo-fallback">N</div>`
       }
-      <div class="logo-name">نیازی پلورنځی</div>
+      <div class="logo-name">فضل پلورنځی</div>
     </div>
 
     <div class="header-copy">
@@ -2267,15 +2377,12 @@ export async function createPaymentReceiptPng({
       <div class="balance-value latin-number" lang="en" dir="ltr">${escapeHtml(toLatinDigits(balanceText))}</div>
     </section>
 
-    <div class="auto-note">
-      دا رسید د نیازی پلورنځی سیستم له لارې په اتومات ډول جوړ شوی دی
-    </div>
+    <div class="auto-note">دا رسید د فضل پلورنځي لخوا در واستول شو.</div>
 
   </main>
 
   <footer class="green-footer">
-    <div class="footer-name">عمده فروشی فیض احمد و عزیزالله نیازی</div>
-    <div class="footer-address">کابل، سرای احمدشاهی، دکان 174</div>
+    <div class="footer-name">فضل د مریو او کرستالو عمده پلورنځی</div>
   </footer>
 
 </div>
@@ -2308,7 +2415,7 @@ export async function createWeeklyDebtReportPng({
     company.company_name ||
     company.shop_name ||
     company.name ||
-    "نیازی پلورنځی";
+    "فضل د مریو او کرستالو عمده پلورنځی";
 
   const companyLogo =
     company.logo_url ||
@@ -3099,6 +3206,93 @@ export async function createWeeklyDebtReportPng({
     font-weight: 700 !important;
   }
 
+
+  /* ===== SHIRULLAH LUXURY THEME — VISUAL ONLY =====
+     This block changes only weekly-report colors/appearance.
+     Rendering, data, WhatsApp, and report-generation logic are untouched. */
+  .weekly-reference {
+    background: linear-gradient(180deg, #fffdf9 0%, #faf7f0 100%) !important;
+    color: #2b2023 !important;
+  }
+
+  .weekly-reference .top-purple {
+    background: linear-gradient(110deg, #e7cf93 0%, #c9a45c 100%) !important;
+  }
+
+  .weekly-reference .top-blue,
+  .weekly-reference .top-blue-inner {
+    background: linear-gradient(112deg, #351018 0%, #541c2c 54%, #762d43 100%) !important;
+  }
+
+  .weekly-reference .top-accent {
+    background: linear-gradient(90deg, #efd58f 0%, #c9a45c 100%) !important;
+  }
+
+  .weekly-reference .head-title h1 { color: #541c2c !important; }
+  .weekly-reference .head-title p { color: #8b641c !important; }
+  .weekly-reference .title-line,
+  .weekly-reference .title-line::after { background: #c9a45c !important; }
+
+  .weekly-reference .meta-card {
+    border-color: #e2d2b5 !important;
+    background: #fffdf8 !important;
+  }
+  .weekly-reference .meta-label { color: #806e65 !important; }
+  .weekly-reference .meta-value { color: #541c2c !important; }
+
+  .weekly-reference .panel { border-color: #e2d2b5 !important; }
+  .weekly-reference .panel-title {
+    background: linear-gradient(105deg, #431421 0%, #642238 56%, #7b3148 100%) !important;
+    border-bottom: 4px solid #c9a45c !important;
+  }
+  .weekly-reference .person-label { color: #88776f !important; }
+  .weekly-reference .person-value { color: #541c2c !important; }
+
+  .weekly-reference .summary-card {
+    border-color: #e5d7bf !important;
+    box-shadow: 0 9px 22px rgba(64, 33, 40, .055) !important;
+  }
+  .weekly-reference .summary-card.remaining { background: linear-gradient(180deg,#ffffff 0%,#fff7f6 100%) !important; }
+  .weekly-reference .summary-card.debt { background: linear-gradient(180deg,#ffffff 0%,#fffaf0 100%) !important; }
+  .weekly-reference .summary-card.paid { background: linear-gradient(180deg,#ffffff 0%,#f3faf6 100%) !important; }
+  .weekly-reference .debt .summary-label,
+  .weekly-reference .debt .summary-value,
+  .weekly-reference .debt .summary-currency { color: #9b6a19 !important; }
+  .weekly-reference .debt .summary-icon { color: #9b6a19 !important; background: #fff0cb !important; }
+  .weekly-reference .paid .summary-label,
+  .weekly-reference .paid .summary-value,
+  .weekly-reference .paid .summary-currency { color: #337753 !important; }
+  .weekly-reference .paid .summary-icon { color: #337753 !important; background: #e2f2e9 !important; }
+  .weekly-reference .remaining .summary-label,
+  .weekly-reference .remaining .summary-value,
+  .weekly-reference .remaining .summary-currency { color: #9d3540 !important; }
+  .weekly-reference .remaining .summary-icon { color: #9d3540 !important; background: #f9e4e5 !important; }
+
+  .weekly-reference .note-card {
+    border-color: #d9bd78 !important;
+    background: linear-gradient(110deg,#fffdf8 0%,#faf5e9 100%) !important;
+  }
+  .weekly-reference .note-title { color: #8e6419 !important; }
+  .weekly-reference .note-text { color: #514b47 !important; }
+  .weekly-reference .note-line { border-top-color: #d9c9a8 !important; }
+  .weekly-reference .thanks { color: #541c2c !important; }
+
+  .weekly-reference .bottom-purple,
+  .weekly-reference .bottom-blue::before { background: #c9a45c !important; }
+  .weekly-reference .bottom-blue {
+    background: linear-gradient(105deg,#351018 0%,#541c2c 52%,#6d263b 100%) !important;
+  }
+  .weekly-reference .bottom-blue::after { background: rgba(122, 48, 72, .30) !important; }
+  .weekly-reference .footer-brand {
+    color: #ffffff !important;
+    text-shadow: 0 2px 5px rgba(0,0,0,.16) !important;
+  }
+  .weekly-reference .footer-brand div:first-child {
+    color: #e6cb8b !important;
+    font-family: "Roboto", "Noto Sans", Arial, sans-serif !important;
+    letter-spacing: 2px !important;
+  }
+
 </style>
 </head>
 
@@ -3188,8 +3382,8 @@ export async function createWeeklyDebtReportPng({
   <div class="bottom-blue"></div>
 
   <div class="footer-brand">
-    <div style="font-size:36px;font-weight:900">${escapeHtml(companyName)}</div>
-    <div style="font-size:21px;font-weight:700;margin-top:4px">${escapeHtml(company.address || company.shop_address || "")}</div>
+    <div style="font-size:30px;font-weight:900">فضل د مریو او کرستالو عمده پلورنځی</div>
+    <div style="font-size:20px;font-weight:700;margin-top:4px">FZL1650</div>
   </div>
 
 </div>
@@ -3231,7 +3425,7 @@ export async function createFullAccountReportPdf({
     company.company_name ||
     company.shop_name ||
     company.name ||
-    "نیازی پلورنځی";
+    "فضل د مریو او کرستالو عمده پلورنځی";
 
   const companyLogo =
     company.logo_url ||
@@ -4175,10 +4369,165 @@ tr {
   color: #e11d48 !important;
 }
 
+
+
+/* ===== SHIRULLAH 3-WEEK FULL REPORT — BURGUNDY / GOLD ===== */
+html,
+body {
+  background: #f4efe6 !important;
+  color: #351018 !important;
+}
+
+.page {
+  background: linear-gradient(180deg, #fffdf8 0%, #faf7f0 100%) !important;
+}
+
+.header {
+  color: #ffffff !important;
+  background: linear-gradient(120deg, #351018 0%, #541c2c 50%, #762d43 100%) !important;
+  border-bottom: 5px solid #c9a45c !important;
+}
+
+.header:after {
+  background: #c9a45c !important;
+  height: 18px !important;
+  bottom: -9px !important;
+}
+
+.header:before {
+  background: #fffdf8 !important;
+}
+
+.shop {
+  color: #ffffff !important;
+}
+
+.address {
+  color: #f3dfad !important;
+}
+
+.title h1 {
+  color: #541c2c !important;
+}
+
+.line {
+  background: #c9a45c !important;
+  height: 3px !important;
+}
+
+.datebox,
+.section,
+table {
+  border-color: #d8bd7d !important;
+  background: #fffdf8 !important;
+}
+
+.section-title {
+  background: linear-gradient(90deg, #351018, #541c2c 55%, #762d43) !important;
+  color: #fff8e7 !important;
+  border-bottom: 3px solid #c9a45c !important;
+}
+
+.cell,
+th,
+td {
+  border-color: #e1cfa9 !important;
+}
+
+th {
+  background: linear-gradient(180deg, #f7ecd2 0%, #efe0bb 100%) !important;
+  color: #541c2c !important;
+}
+
+.heading {
+  color: #541c2c !important;
+}
+
+.green {
+  border-color: #8fbd94 !important;
+  background: #f4fbf3 !important;
+}
+
+.green * {
+  color: #397a45 !important;
+}
+
+.bluecard {
+  border-color: #d8bd7d !important;
+  background: #fff8e7 !important;
+}
+
+.bluecard * {
+  color: #8a6725 !important;
+}
+
+.redcard {
+  border-color: #b97888 !important;
+  background: #fff4f6 !important;
+}
+
+.redcard * {
+  color: #7a263d !important;
+}
+
+.payment-history .heading,
+.payment-history th,
+.payment-history td,
+.payment-history .date-cell,
+.payment-history .receipt-amount,
+.payment-history .receipt-method,
+.payment-history .receipt-reference {
+  color: #541c2c !important;
+}
+
+.balance-history .heading,
+.balance-history th,
+.balance-history td,
+.balance-history .date-cell,
+.balance-history .bill-number,
+.balance-history .bill-amount {
+  color: #7a263d !important;
+}
+
+.sign {
+  border-top-color: #c9a45c !important;
+  color: #541c2c !important;
+}
+
+.note {
+  border: 1.5px solid #c9a45c !important;
+  background: #fff8e7 !important;
+  color: #5b4249 !important;
+}
+
+.purple {
+  background: #c9a45c !important;
+}
+
+.footer {
+  background: linear-gradient(105deg, #351018 0%, #541c2c 52%, #762d43 100%) !important;
+  border-top: 4px solid #efd58f !important;
+}
+
+.fdate {
+  color: #fff8e7 !important;
+  bottom: 30px !important;
+}
+
+.fbrand {
+  color: #fff8e7 !important;
+  right: 32px !important;
+  bottom: 25px !important;
+  max-width: 560px !important;
+  font-size: 14px !important;
+  font-weight: 800 !important;
+  line-height: 1.5 !important;
+  text-align: right !important;
+}
 </style></head><body><div class="page">
 ${companyLogo?`<div class="watermark"><img src="${escapeHtml(companyLogo)}"/></div>`:""}
 <div class="content">
-<header class="header">${companyLogo?`<img class="logo" src="${escapeHtml(companyLogo)}"/>`:""}<div class="shop">فضل د مریو او کرستالو عمده پلورنځی</div><div class="address">${escapeHtml(companyAddress)}</div></header>
+<header class="header">${companyLogo?`<img class="logo" src="${escapeHtml(companyLogo)}"/>`:""}<div class="shop">فضل د مریو او کرستالو عمده پلورنځی</div><div class="address">FZL1650</div></header>
 <section class="title"><h1>د مشتری بشپړ حسابي راپور</h1><div class="line"></div></section>
 <div class="datebox"><span>نیټه:</span><span class="ltr full-report-latin" lang="en" dir="ltr">${escapeHtml(toLatinDigits(reportDate))}</span></div>
 <section class="section"><div class="section-title">د حساب معلومات</div><div class="info">
@@ -4193,10 +4542,10 @@ ${companyLogo?`<div class="watermark"><img src="${escapeHtml(companyLogo)}"/></d
 </section>
 <section class="block payment-history"><div class="heading">د وصولو تاریخچه</div><table><thead><tr><th>تاریخ</th><th>مبلغ</th><th>طریقه</th><th>حواله نمبر</th></tr></thead><tbody>${paymentTableRows||`<tr><td colspan="4">ریکارډ نشته</td></tr>`}</tbody></table></section>
 <section class="block balance-history"><div class="heading">باقیات</div><table><thead><tr><th>بل نمبر</th><th>تاریخ</th><th>مبلغ</th></tr></thead><tbody>${debtTableRows||`<tr><td colspan="3">ریکارډ نشته</td></tr>`}</tbody></table></section>
-<section class="signs"><div class="sign">د فرمانده امضا</div><div class="sign">د محاسب امضا</div><div class="sign">مهر او تایید</div></section>
-<div class="note">دا راپور د نیازی پلورنځی WMS سیستم له لارې په اتومات ډول جوړ شوی دی.</div>
+<section class="signs"><div class="sign">دمسوول امضا</div><div class="sign">د محاسب امضا</div><div class="sign">مهر او تایید</div></section>
+<div class="note">دا راپور د فضل پلورنځي لخوا در واستول شو.</div>
 </div>
-<div class="purple"></div><div class="footer"></div><div class="fdate full-report-latin" lang="en" dir="ltr">${escapeHtml(toLatinDigits(reportDate))}</div><div class="fbrand">نیازی پلورنځی &nbsp; • &nbsp; WMS Pro</div>
+<div class="purple"></div><div class="footer"></div><div class="fdate full-report-latin" lang="en" dir="ltr">${escapeHtml(toLatinDigits(reportDate))}</div><div class="fbrand">فضل پلورنځی — FZL1650</div>
 </div></body></html>`;
 
   const browser = await getBrowser();
