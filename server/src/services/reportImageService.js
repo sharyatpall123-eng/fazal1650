@@ -2317,17 +2317,20 @@ export async function createPaymentReceiptPng({
 
   /* A restrained gold signature under the shop name — receipt only. */
   .green-footer .footer-credit {
-    margin-top: 4px;
-    padding-top: 5px;
-    min-width: 255px;
-    border-top: 1px solid rgba(230, 203, 139, .53);
-    color: #e6cb8b;
-    font-family: "Noto Naskh Arabic", "Noto Sans Arabic", Tahoma, sans-serif;
-    font-size: 13px;
-    font-weight: 600;
-    line-height: 1.4;
-    letter-spacing: .15px;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, .14);
+    display: block !important;
+    margin: 4px auto 0 !important;
+    padding: 6px 15px 0 !important;
+    min-width: 310px;
+    max-width: 100%;
+    border-top: 1px solid rgba(230, 203, 139, .64);
+    color: #f0d99e !important;
+    font-family: "Noto Naskh Arabic", "Noto Sans Arabic", Tahoma, sans-serif !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    line-height: 1.55 !important;
+    letter-spacing: .1px;
+    text-align: center !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, .12);
     white-space: nowrap;
   }
 </style>
@@ -2399,7 +2402,7 @@ export async function createPaymentReceiptPng({
 
   <footer class="green-footer">
     <div class="footer-name">فضل د مریو او کرستالو عمده پلورنځی</div>
-    <div class="footer-credit">انجینري او پراختیا: عزیزالله</div>
+    <div class="footer-credit">انجینري او پراختیا: عزیزالله نیازی</div>
   </footer>
 
 </div>
@@ -3327,7 +3330,7 @@ export async function createWeeklyDebtReportPng({
     color: #fff9ed !important;
   }
 
-  .weekly-reference .footer-brand .footer-credit {
+  .weekly-reference .footer-brand div.footer-credit {
     margin-top: 2px !important;
     padding: 3px 20px 0 !important;
     border-top: 1px solid rgba(230, 203, 139, .68) !important;
@@ -3432,7 +3435,7 @@ export async function createWeeklyDebtReportPng({
   <div class="footer-brand">
     <div style="font-size:30px;font-weight:900">فضل د مریو او کرستالو عمده پلورنځی</div>
     <div class="footer-code">FZL1650</div>
-    <div class="footer-credit">انجینري او پراختیا: عزیزالله</div>
+    <div class="footer-credit">انجینري او پراختیا: عزیزالله نیازی</div>
   </div>
 
 </div>
