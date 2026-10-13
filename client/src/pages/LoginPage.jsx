@@ -120,6 +120,7 @@ export default function LoginPage() {
                 <div className="mx-auto mt-5 h-1 w-20 rounded-full bg-blue-600" />
                 <h2 className="mt-7 text-2xl font-black text-slate-900">ښه راغلاست</h2>
                 <p className="mt-2 text-sm text-slate-600">خپل حساب ته ننوځئ</p>
+                <p dir="ltr" className="mt-4 text-center text-xs font-medium text-slate-500">2026/10/1</p>
               </div>
 
               <div className="mt-7 space-y-4">
