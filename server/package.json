@@ -25,7 +25,7 @@
     "qrcode": "^1.5.4",
     "qrcode-terminal": "^0.12.0",
     "sharp": "^0.35.3",
-    "whatsapp-web.js": "https://github.com/wwebjs/whatsapp-web.js/archive/refs/heads/main.tar.gz"
+    "whatsapp-web.js": "https://github.com/wwebjs/whatsapp-web.js/archive/064a3d5a5a3dce1281a6a12740b5a7051339d154.tar.gz"
   },
   "devDependencies": {
     "nodemon": "3.1.10"
