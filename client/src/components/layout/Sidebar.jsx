@@ -219,21 +219,13 @@ export default function Sidebar({
     }
   }, [loadSidebarData, location.pathname, location.search]);
 
-  // Warm the debtors overview in memory after authentication so opening the
-  // page feels instant instead of waiting for its first network round-trip.
-  useEffect(() => {
-    if (canDebtors) {
-      void debtorService.prefetchList({ search: "", limit: 100 });
-    }
-  }, [canDebtors]);
-
   useEffect(() => {
     const active = routeGroup(location.pathname, location.search);
     if (active) setOpenGroup(active);
   }, [location.pathname, location.search]);
 
   useEffect(() => {
-    const timer = window.setInterval(() => setClock(new Date()), 1000);
+    const timer = window.setInterval(() => setClock(new Date()), 15_000);
     return () => window.clearInterval(timer);
   }, []);
 
