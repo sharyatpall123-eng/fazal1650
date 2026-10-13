@@ -1,0 +1,14 @@
+WMS Pro - وروستي دوه قدمونه
+
+1) Supabase > SQL Editor خلاص کړه.
+   د supabase/FINAL_SETUP.sql ټول محتوا Paste کړه او Run یې کړه.
+
+2) server/.env خلاص کړه او:
+   SUPABASE_SERVICE_ROLE_KEY=PASTE_NEW_SERVICE_ROLE_KEY_HERE
+   پر ځای خپله نوې Service Role / Secret key واچوه.
+
+بیا په root فولډر کې:
+   npm install
+   npm run dev
+
+یادونه: پخوانۍ Secret key په screenshot کې ښکاره شوې وه، نو نوې key وکاروه.

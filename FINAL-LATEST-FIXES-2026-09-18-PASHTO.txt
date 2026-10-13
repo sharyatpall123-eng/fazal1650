@@ -1,0 +1,30 @@
+AZI SYSTEM WMS — وروستي اصلاحات (2026-09-18)
+
+په دې نسخه کې د وروستیو غوښتنو مهم اصلاحات:
+- Dashboard/Header کې یوازې نوی Daisy عکس کارول کېږي؛ زاړه header عکسونه حذف شول او عکس ټول header پوښي.
+- iPad/Tablet کې Sidebar د موبایل په شان Hamburger Drawer دی؛ چپ تش ځای ختم شوی او content بشپړ عرض نیسي.
+- Warehouse cards په iPad کې متوازن او لږ لوړ شوي.
+- Add Product کې نمبره/Code اختیاري دی.
+- د قرضدار card/list کې یوازې «جمله باقی» ښکاري؛ وصولي د اصلي card نه لرې شوې.
+- د قرضدار Payment/Balance history ریکارډونه په منظم یو-کالم، یو-row table-like layout کې راغلل.
+- د بارچلان/استازي راپورونه د Stock List/History په شان په واضح table layout کې منظم شول.
+- د استازي «لاره کې د مال ارزښت» یوازې د پاتې/نه تسلیم شوي مال له مقدار سره حسابېږي؛ که پاتې مال 0 وي ارزښت هم 0 دی.
+- Mobile/iPad کې د استازي Summary اضافي تشریحي متنونه پټ شوي.
+- Page sections په نرم، step-by-step stagger animation راځي.
+- Stock In/Stock Out موجود validation او live +/- calculation ساتل شوي؛ د منفي/زیات Stock Out مخه نیول کېږي.
+- Run scripts اصلاح شول؛ START-WMS.cmd نور root workspace ته اړتیا نه لري.
+- Settings کې Email Backup اضافه شوی: Save email/settings + Send backup now + Daily/Weekly automatic backup.
+
+د Email Backup لپاره یو ځل دا کارونه ضروري دي:
+1) Supabase SQL Editor کې supabase/migrations/004_email_backup.sql اجرا کړئ.
+2) server/.env کې دا درې کرښې له خپل Gmail sender سره تنظیم کړئ:
+   BACKUP_SMTP_USER=yourgmail@gmail.com
+   BACKUP_SMTP_APP_PASSWORD=your_google_app_password
+   BACKUP_SMTP_FROM=yourgmail@gmail.com
+3) عادي Gmail password مه کاروئ؛ Google App Password وکاروئ.
+
+د پروژې Run:
+1) 1-INSTALL.cmd یو ځل وچلوئ.
+2) START-WMS.cmd وچلوئ.
+
+یادونه: د Supabase او Gmail حقیقي credentials په ZIP کې نه دي شامل شوي.

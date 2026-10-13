@@ -1,0 +1,9 @@
+د 2026-09-19 وروستي بدلونونه
+
+1) Dashboard: Smart Warehouse او Weather بکسونه په Mobile، iPad او Laptop کې لنډ/compact شول.
+2) Warehouse: پورته Summary cards واړه او compact شول.
+3) Warehouse: اصلي Warehouse cards په Mobile، iPad او Laptop کې لوړ/اوږد شول.
+4) د لاري مالونه: په لاس Status انتخاب (ټول، لاره کې، تسلیم شوی، نیم تسلیم) او د انتخاب دننه نوی تاریخ سر ته، زوړ لاندې.
+5) د وصولۍ WhatsApp receipt: د canvas toBlob مستقیم استعمال لرې شو او safer PNG Blob conversion وکارول شو.
+
+یادونه: FIX-NOW-2026-09-19.sql د database اړوند مخکینیو fixes لپاره هم په پروژه کې شته.

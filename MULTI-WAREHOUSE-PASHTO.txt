@@ -1,0 +1,10 @@
+د څو ګدامونو اصلاح
+
+1) Supabase SQL Editor کې دا فایل Run کړئ:
+   supabase/migrations/003_multi_warehouse_inventory.sql
+
+2) Backend او Frontend restart کړئ.
+
+اوس هر Product د warehouse_id له لارې خپل ګدام سره تړل کېږي.
+Add Product کې ګدام انتخاب شته، د هر ګدام کارت خپل Products/Stock/Low Stock جلا حسابوي،
+او د ګدام Details یوازې د هماغه ګدام جنسونه او Stock Movements ښيي.

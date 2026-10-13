@@ -1,0 +1,11 @@
+د سټاک د اوسني Error د حل لپاره:
+
+1) Supabase > SQL Editor ته لاړ شه.
+2) supabase/COMPATIBILITY_FIX.sql ټول کوډ Copy او Run کړه.
+3) Backend بند او بیا npm run dev چالان کړه.
+4) Frontend Refresh کړه.
+
+دا Fix دا ستونزې حل کوي:
+- stock_movements.balance_after missing
+- د Main Warehouse card stock نه تازه کېدل
+- د زړو schema نسخو سره د warehouse/products/stock_movements برابرول

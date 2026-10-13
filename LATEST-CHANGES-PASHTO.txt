@@ -1,0 +1,15 @@
+AZI SYSTEM WMS - وروستي اصلاحات
+
+1. د کاروونکي ورکړل شوي څلور عکسونه د سیستم د اصلي Header/Hero برخو لپاره شامل شول.
+2. Dashboard ته د ګل عکس Header ورکړل شو.
+3. Representatives او Representative Details ته د جهيل عکس Header ورکړل شو.
+4. Debtors او Debtor Details ته د آبي ګلونو عکس Header ورکړل شو.
+5. Warehouse او Representative Account ته د سمندر/جزيرې عکس Header ورکړل شو.
+6. Reports، Settings، Users او Notifications PageHeader ته هم د همدې عکسونو جلا background ورکړل شو.
+7. د عکسونو پر سر نرم dark overlay شته، څو Pashto/English متن واضح پاتې شي.
+8. Header عکسونه په Mobile، iPad/Tablet او Laptop/Desktop ټولو کې فعال دي.
+9. iPad/Tablet layout نور compact شوی: Topbar، page canvas، spacing، hero height او title sizing کم شوي.
+10. iPad/Tablet ته laptop-like density ورکړل شوې، خو Desktop 1280px او پورته اصلي sizing نه دی بدل شوی.
+11. د مخکېني ZIP Mobile compact modals او نور موجود اصلاحات ساتل شوي دي.
+
+یادونه: node_modules په ZIP کې نشته. په client او server کې npm install اجرا کړئ.

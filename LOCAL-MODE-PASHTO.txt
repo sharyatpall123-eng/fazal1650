@@ -1,0 +1,17 @@
+Professional WMS - Local Mode
+
+د VS Code له Terminal څخه:
+
+1) npm install
+2) npm run dev
+3) http://localhost:5173
+
+Login:
+Username: admin
+Password: admin123
+
+ټول Frontend pages په Local Mode کې کار کوي. معلومات د Browser په localStorage کې ساتل کېږي.
+Backend او Supabase ته اوس اړتیا نشته.
+
+که زاړه معلومات ستونزه جوړوي، په Chrome Console کې دا اجرا کړئ:
+localStorage.clear(); sessionStorage.clear(); location.reload();

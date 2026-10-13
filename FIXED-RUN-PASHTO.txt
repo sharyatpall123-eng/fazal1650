@@ -1,0 +1,23 @@
+د پروژې چلول
+
+1. ZIP Extract کړه.
+2. د Extract شوي فولډر په اصلي ځای کې Terminal خلاص کړه.
+3. دا قوماندې اجرا کړه:
+
+npm install
+npm run dev
+
+که یوازې Frontend چلوې:
+
+cd client
+npm install
+npm run dev
+
+Login:
+Username: admin
+Password: admin123
+
+مهم:
+- په دې نسخه کې framer-motion او motion dependency بشپړ حذف شوي.
+- Animationونه اوس په React او CSS جوړ شوي، نو د motion-dom activeAnimations خطا نه راځي.
+- زاړه node_modules له بلې نسخې مه Copy کوه؛ npm install تازه اجرا کړه.

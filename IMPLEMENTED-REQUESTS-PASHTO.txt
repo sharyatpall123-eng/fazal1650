@@ -1,0 +1,17 @@
+دا نسخه یوازې د کارونکي د تایید شویو غوښتنو لپاره جوړه شوې ده.
+
+اصلي اصول:
+- Mobile compact responsive layout.
+- Tablet/iPad د laptop په شان منظم layout؛ د قرضدارانو 3 cards په row کې.
+- Desktop/Laptop موجوده اصلي sizing ساتل شوی.
+- Mobile modals compact او centered شوي.
+- نوی قرضدار: Note لرې، سابقه باقي اضافه.
+- Stock history تر 5 وروستیو records محدود.
+- Dashboard numbers count-up animation لري.
+- د قرضدار راپور compact شوی، د مبلغ حروفي متن له report values/tables لرې شوی.
+- PWA نوم Azi system او manifest/icon اضافه شوي.
+- Backup/Restore موجوده بشپړ flow ساتل شوی.
+- Vite LAN host/proxy موجود او Server د ټولو interfaces له لارې listen کوي.
+- .env فایلونه په ZIP کې شامل دي (د موجودو example values پر بنسټ، ځکه په ورکړل شوي ZIP کې اصلي .env نه وو).
+
+یادونه: هغه functionality چې په اصلي پروژه کې له مخکې موجوده وه، بې ضرورته نه ده بدله شوې.

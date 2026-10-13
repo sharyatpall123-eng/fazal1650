@@ -1,0 +1,18 @@
+AZI SYSTEM WMS — Final fixes 2026-09-18
+
+1. Mobile warehouse, debtor and representative photo headers are shorter and compact.
+2. Mobile summary cards are substantially smaller and remain two per row.
+3. iPad landscape now behaves like a small laptop: permanent narrow sidebar, compact topbar, compact page canvas.
+4. iPad summary cards and dashboard header/cards are reduced so more content fits on screen.
+5. iPad warehouse list uses two cards per row where space allows.
+6. Dashboard old page background image was removed to prevent double-background appearance.
+7. The daisy header image is now used across page headers; its background treatment is zoomed out so the flower is more visible.
+8. New debtor, representative and other standard modals are smaller on mobile and iPad.
+9. Stock In and Stock Out were simplified: product, automatic date, quantity and save. Search/notes/extra preview controls removed. Product is locked when opened from a product card.
+10. Representative goods status colors and status sorting from the prior build are preserved.
+11. Sidebar no longer reloads its supporting data on every route change, reducing unnecessary API calls.
+12. Stagger animations are kept but shortened so the UI feels faster.
+13. Important dashboard/warehouse summary labels now follow English/Pashto/Dari settings.
+14. Thin page frame/border from the prior build is preserved.
+15. Existing client and server .env files are preserved in this package.
+16. Removed an unused corrupted duplicate server controller file; active server controller remains unchanged.

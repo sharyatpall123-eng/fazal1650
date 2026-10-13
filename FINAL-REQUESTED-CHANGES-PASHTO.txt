@@ -1,0 +1,16 @@
+وروستي غوښتل شوي اصلاحات
+
+- په موبایل کې د قرضدارانو، استازو او ګدامونو Headerونه او Summary بکسونه compact کړل.
+- په iPad کې Headerونه، Summary بکسونه، Dashboard density او Sidebar کوچني/منظم کړل.
+- په iPad کې Sidebar د navigation لپاره temporary drawer ته نږدې کړای شو او د content لپاره اضافه ځای خلاص شو.
+- په Mobile او iPad کې Add/Edit modalونه compact کړل.
+- Dashboard د نوي Daisy header عکس لپاره background sizing اصلاح شو څو عکس لږ zoom ښکاره شي.
+- د استازو د مالونو لپاره درې واضح حالتونه: تسلیم شوی، نیم تسلیم، پاتې/لاره کې؛ row/card رنګونه جلا شول.
+- د استازو مالونو ته Sort اضافه شو: تسلیم شوی، پاتې، نیم تسلیم.
+- iPad کې د ګدام cards دوه په یوه قطار کې تنظیم شول.
+- د پروژې موجود step animations او count-up animations وساتل شول او responsive density سره برابر شول.
+- Sidebar لپاره پښتو/دري/English مهم labels د Settings ژبې سره وصل شول؛ English اوسنی حالت ساتل شوی.
+- د هرې صفحې content شاوخوا نری، نرم border اضافه شو.
+- Client/Server او موجود env فایلونه ساتل شوي.
+
+یادونه: node_modules په ZIP کې نشته. د Run مخکې npm install اجرا کړئ.

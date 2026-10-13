@@ -1,0 +1,14 @@
+د وروستۍ نسخې بدلونونه
+
+1. Login page د glass design، live analog clock او tropical beach background سره تنظیم شو.
+2. Dashboard ته د ورکړل شوي روښانه سمندري background عکس اضافه شو.
+3. د Dashboard پرته نورې پاڼې سپین او پاک background لري.
+4. Sidebar په English شو او rounded blue design، profile card، سپین active item او طلایي icons لري.
+5. Warehouse page د Warehouse list او View Warehouse جزیاتو په ترتیب تنظیم شو.
+6. Warehouse Details کې summary cards، search، filters، products table، pagination او product actions ساتل شوي.
+7. د پښتو متنونو RTL ترتیب او line spacing منظم شول.
+8. Page entrance animation نورو اصلي pages ته هم اضافه شو.
+9. MainLayout کې AnimatedOutlet یا page animation نه دی اضافه شوی.
+10. node_modules له ZIP څخه ایستل شوي.
+
+یادونه: په دې چاپېریال کې npm install د package registry د لاسرسي د timeout له امله بشپړ نه شو، نو build او dev په عملي ډول ونه ازمویل شول.

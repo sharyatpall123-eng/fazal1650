@@ -1,0 +1,22 @@
+AZI SYSTEM WMS — وروستي اصلاحات — 2026-09-18
+
+1. iPad Landscape layout د لپټاپ په شان خو compact او flexible شو.
+2. iPad کې Sidebar ښکاره او ثابت شو او app د موجود سکرین ځای سم استعمالوي.
+3. د iPad لپاره cards, headers, tables او spacing کم او منظم شول تر څو scroll کم شي.
+4. د ګدامونو cards واړه، منظم او اعداد پکې لوی او واضح شول.
+5. Warehouse Stock List په واضح table بڼه، borders او جلا rows/columns سره منظم شو.
+6. Summary cards په مهمو صفحو کې یو شان clean او professional شول.
+7. نوی ورکړل شوی flower header image د header لپاره وکارول شو.
+8. د Dashboard پخوانی background image بشپړ لرې شو او له نوي عکس سره نور نه ګډېږي.
+9. غټ modals/forms لکه نوی قرضدار کوچني او compact شول.
+10. Stock In او Stock Out workspace په laptop کې مناسب غټ او منظم شو.
+11. Stock In/Out کې Back button اضافه شو.
+12. Stock In/Out کې live calculation اضافه شو: لکه 10 + 20 = 30 او 30 - 20 = 10.
+13. د قرضدار نوم په card/table کې منظم او centered شو.
+14. د قرضدار موبایل نمبر له اصلي card/list څخه پټ شو؛ details کې پاتې دی.
+15. وصولي او باقیات په یو منظم column/cell کې یوځای شول.
+16. Stock History ډېر compact شو او یوازې وروستي 4 records ښيي.
+17. د پروژې د سرعت لپاره route code splitting اضافه شو.
+18. Warehouse product filtering local شو او غیر ضروري تکراري API requests کم شول.
+19. د debtor list لپاره payments په batch ډول اخیستل کېږي، نه د هر debtor لپاره جلا request.
+20. Source syntax check کامیاب شو.

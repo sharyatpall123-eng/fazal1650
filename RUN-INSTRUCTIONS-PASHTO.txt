@@ -1,0 +1,15 @@
+د پروژې د چلولو اسانه لار:
+
+1. ZIP په بشپړ ډول Extract کړه.
+2. Extract شوي فولډر ته ننوځه.
+3. START-WMS.cmd دوه ځله Click کړه.
+4. لومړی ځل dependencies نصبېږي، بیا پروژه چلېږي.
+5. په Browser کې هغه Local URL خلاص کړه چې Terminal یې درښيي، عموماً:
+   http://localhost:5173
+
+د CMD له لارې:
+cd /d D:\WMS-Azizullah-ready
+npm install
+npm run dev
+
+مهم: npm قوماندې باید په هغه فولډر کې وچلوې چې package.json پکې ښکاري.

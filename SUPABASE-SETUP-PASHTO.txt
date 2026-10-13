@@ -1,0 +1,55 @@
+WMS Pro — Supabase Setup
+========================
+
+ستا د پروژې Design او Pages نه دي بدل شوي. Data layer د Node/Express API له لارې Supabase ته واوښت.
+
+فقط دا 3 کارونه وکړه:
+
+1) Service Role Key واچوه
+--------------------------
+فایل خلاص کړه:
+server/.env
+
+دا کرښه پیدا کړه:
+SUPABASE_SERVICE_ROLE_KEY=
+
+د = وروسته خپل Supabase Service Role / Secret key Paste کړه.
+Secret key په client/.env کې مه اچوه.
+
+2) دوهم SQL فایل Run کړه
+-------------------------
+Supabase Dashboard > SQL Editor > New Query
+
+دا فایل خلاص کړه:
+supabase/migrations/002_current_ui_features.sql
+
+ټول کوډ Copy > SQL Editor کې Paste > Run
+
+دا موجود Database نه پاکوي. یوازې هغه tables/columns زیاتوي چې د اوسني UI لپاره لازم دي:
+- warehouses
+- debtor_balance_records
+- representative_receipts
+- recycle_bin
+- debtor photo / bad debt fields
+
+3) Administrator جوړ کړه
+-------------------------
+3-CREATE-ADMIN.cmd دوه ځله Click کړه.
+Email, Username, Full Name او Login Code ولیکه.
+Login Code لږ تر لږه 8 characters وي.
+
+په Login page کې همدا Username/Email او همدا Login Code استعمال کړه.
+
+پروژه چلول
+-----------
+2-RUN.cmd
+
+دا اوس Frontend او Backend دواړه یو ځای چلوي:
+Frontend: http://localhost:5173
+Backend:  http://localhost:5000
+
+مهم:
+- client/.env کې Publishable key وي.
+- server/.env کې Service Role key وي.
+- Service Role key مه Share کوه.
+- د Supabase اتصال لپاره UI/CSS نه دي بدل شوي.
