@@ -2299,7 +2299,7 @@ export async function createWeeklyDebtReportPng({
   currency = "AFN",
   generatedAt = new Date(),
 }) {
-  console.log("📊 SHIRULLAH PREMIUM WEEKLY REPORT RUNNING");
+  console.log("📊 AZI HTML WEEKLY REPORT REFERENCE DESIGN RUNNING");
 
   const customerName = getCustomerName(customer);
   const money = getCurrency(currency);
@@ -2317,6 +2317,7 @@ export async function createWeeklyDebtReportPng({
     "";
 
   const reportTitle = "د حساب اوونیز راپور";
+
   const currencyText = money.code === "USD" ? "USD" : money.symbol;
 
   const totalDebtText = toLatinDigits(formatNumber(totalDebt));
@@ -2339,12 +2340,8 @@ export async function createWeeklyDebtReportPng({
         .replace(/-/g, "/")
     );
   } catch {
-    // Keep fallback.
+    // Keep fallbacks.
   }
-
-  const logoHtml = companyLogo
-    ? `<img class="brand-logo" src="${escapeHtml(companyLogo)}" alt="logo" />`
-    : `<div class="brand-logo-fallback">AZI</div>`;
 
   const html = `
 <!DOCTYPE html>
@@ -2355,43 +2352,46 @@ export async function createWeeklyDebtReportPng({
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet" />
 <style>
-  * {
-    box-sizing: border-box;
-  }
+  * { box-sizing: border-box; }
 
-  html,
-  body {
+  html, body {
     margin: 0;
     padding: 0;
-    width: 1080px;
-    height: 1440px;
-    overflow: hidden;
-    background: #f4efe6;
+    background: #ffffff;
   }
 
   body {
-    font-family:
-      "Noto Naskh Arabic",
-      "Noto Sans Arabic",
-      "DejaVu Sans",
-      Tahoma,
-      Arial,
-      sans-serif;
+    font-family: "Noto Naskh Arabic", "Noto Sans Arabic", "DejaVu Sans", Arial, sans-serif;
+    color: #17324f;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
 
+  /* Hostinger-safe weekly typography.
+     The working payment receipt already loads these web fonts, so the weekly
+     report uses the same remote Arabic font instead of relying on Linux system fonts. */
+  .weekly-reference,
+  .weekly-reference * {
+    font-family: "Noto Naskh Arabic", "Noto Sans Arabic", "DejaVu Sans", Arial, sans-serif;
+  }
+
+  .head-title h1,
+  .panel-title,
+  .summary-label,
+  .note-title,
+  .thanks,
+  .footer-brand {
+    font-family: "Amiri", "Noto Naskh Arabic", "Noto Sans Arabic", serif !important;
+  }
+
+  /* Latin digits/currency use Roboto loaded from the same Google Fonts request. */
   .weekly-latin {
     direction: ltr !important;
     unicode-bidi: isolate !important;
-    font-family:
-      "Roboto",
-      "Noto Sans",
-      "DejaVu Sans",
-      Arial,
-      sans-serif !important;
-    font-variant-numeric: tabular-nums lining-nums;
-    font-feature-settings: "tnum" 1, "lnum" 1;
+    font-family: "Roboto", "Noto Sans", "DejaVu Sans", Arial, sans-serif !important;
+    font-variant-numeric: tabular-nums lining-nums !important;
+    font-feature-settings: "tnum" 1, "lnum" 1 !important;
+    font-synthesis: none !important;
     letter-spacing: 0 !important;
   }
 
@@ -2400,735 +2400,806 @@ export async function createWeeklyDebtReportPng({
     height: 1440px;
     position: relative;
     overflow: hidden;
-    background:
-      radial-gradient(
-        circle at 8% 40%,
-        rgba(201, 164, 92, 0.08) 0 150px,
-        transparent 152px
-      ),
-      linear-gradient(
-        180deg,
-        #fffdf8 0%,
-        #faf7f0 100%
-      );
-    color: #2b2023;
+    background: #ffffff;
+    padding: 122px 70px 118px;
   }
 
-  /* =======================================================
-     PREMIUM BURGUNDY HEADER
-  ======================================================= */
-
-  .premium-header {
-    height: 315px;
-    position: relative;
-    overflow: hidden;
-    padding: 42px 70px 40px;
-    color: #ffffff;
-    background:
-      linear-gradient(
-        120deg,
-        #351018 0%,
-        #541c2c 48%,
-        #762d43 100%
-      );
-    border-bottom: 7px solid #c9a45c;
-  }
-
-  .premium-header::before {
-    content: "";
+  /* Top geometric background from the supplied reference */
+  .top-blue {
     position: absolute;
-    width: 560px;
-    height: 360px;
-    left: -155px;
-    top: -165px;
-    transform: rotate(-18deg);
-    border: 1px solid rgba(229, 199, 131, 0.34);
-    background: rgba(255, 255, 255, 0.025);
+    top: -82px;
+    right: -125px;
+    width: 890px;
+    height: 305px;
+    background: linear-gradient(110deg,#22399d,#075bc7 54%,#04a9ec);
+    clip-path: polygon(15% 0, 100% 0, 100% 62%, 63% 100%, 0 17%);
+    z-index: 0;
   }
 
-  .premium-header::after {
-    content: "";
+  .top-purple {
     position: absolute;
-    width: 430px;
-    height: 430px;
-    right: -210px;
-    bottom: -300px;
-    border-radius: 50%;
-    border: 55px solid rgba(255, 255, 255, 0.035);
+    top: -25px;
+    right: -60px;
+    width: 860px;
+    height: 280px;
+    background: #bf6db9;
+    clip-path: polygon(11% 0, 100% 0, 100% 62%, 63% 100%, 0 16%);
+    z-index: 0;
   }
 
-  .header-top {
+  .top-blue-inner {
+    position: absolute;
+    top: -48px;
+    right: -38px;
+    width: 850px;
+    height: 258px;
+    background: linear-gradient(110deg,#22399d,#075bc7 54%,#04a9ec);
+    clip-path: polygon(12% 0, 100% 0, 100% 61%, 63% 100%, 0 14%);
+    z-index: 0;
+  }
+
+  .top-accent {
+    position: absolute;
+    top: 172px;
+    right: 70px;
+    width: 245px;
+    height: 22px;
+    background: #b66bb8;
+    transform: rotate(-9deg);
+    z-index: 1;
+  }
+
+  .report-head {
     position: relative;
-    z-index: 3;
+    z-index: 2;
+    width: 100%;
+    min-height: 310px;
+    direction: rtl;
+  }
+
+  .weekly-brand {
+    display: none;
+    position: absolute;
+    top: -10px;
+    right: 18px;
+    width: 410px;
+    min-height: 105px;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 28px;
-  }
-
-  .company-brand {
-    display: flex;
-    align-items: center;
-    gap: 18px;
-    min-width: 0;
-  }
-
-  .logo-shell {
-    width: 84px;
-    height: 84px;
-    flex: 0 0 84px;
-    padding: 8px;
-    border-radius: 22px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #fffdf8;
-    border: 2px solid rgba(225, 196, 127, 0.9);
-    box-shadow: 0 12px 30px rgba(23, 4, 10, 0.22);
-  }
-
-  .brand-logo {
-    width: 68px;
-    height: 68px;
-    object-fit: contain;
-    border-radius: 15px;
-  }
-
-  .brand-logo-fallback {
-    width: 68px;
-    height: 68px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 15px;
-    background: linear-gradient(135deg, #541c2c, #7b3048);
-    color: #f0d89d;
-    font: 900 20px/1 "Roboto", Arial, sans-serif;
-    letter-spacing: 1px;
-  }
-
-  .company-copy {
-    min-width: 0;
-    text-align: right;
-  }
-
-  .company-label {
-    color: #e5c77f;
-    font-size: 17px;
-    line-height: 1.3;
-    font-weight: 700;
-  }
-
-  .company-name {
-    margin-top: 3px;
-    color: #ffffff;
-    font-family:
-      "Amiri",
-      "Noto Naskh Arabic",
-      serif;
-    font-size: 29px;
-    line-height: 1.45;
-    font-weight: 700;
-  }
-
-  .date-badge {
-    flex: 0 0 auto;
-    min-width: 205px;
-    padding: 12px 22px 11px;
-    border: 1px solid rgba(229, 199, 127, 0.58);
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.08);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
-    text-align: center;
-  }
-
-  .date-label {
-    color: #e5c77f;
-    font-size: 15px;
-    line-height: 1.2;
-    font-weight: 700;
-  }
-
-  .date-value {
-    margin-top: 4px;
-    color: #ffffff;
-    font-size: 19px;
-    line-height: 1.25;
-    font-weight: 900;
-  }
-
-  .header-title {
-    position: relative;
-    z-index: 3;
-    margin-top: 28px;
-    text-align: center;
-  }
-
-  .header-title h1 {
-    margin: 0;
-    color: #ffffff;
-    font-family:
-      "Amiri",
-      "Noto Naskh Arabic",
-      serif;
-    font-size: 58px;
-    line-height: 1.25;
-    font-weight: 700;
-  }
-
-  .header-title p {
-    margin: 5px 0 0;
-    color: #eadde1;
-    font-size: 21px;
-    line-height: 1.45;
-    font-weight: 600;
-  }
-
-  .gold-mark {
-    width: 118px;
-    height: 4px;
-    margin: 15px auto 0;
-    border-radius: 999px;
-    background:
-      linear-gradient(
-        90deg,
-        transparent,
-        #e4c87f 24%,
-        #c9a45c 50%,
-        #e4c87f 76%,
-        transparent
-      );
-  }
-
-  /* =======================================================
-     CONTENT
-  ======================================================= */
-
-  .report-content {
-    padding: 40px 68px 130px;
-  }
-
-  .panel {
-    overflow: hidden;
-    border: 1.5px solid #e3d5bd;
-    border-radius: 27px;
-    background: rgba(255, 255, 255, 0.96);
-    box-shadow:
-      0 13px 32px rgba(61, 32, 38, 0.07);
-  }
-
-  .panel + .panel {
-    margin-top: 25px;
-  }
-
-  .panel-title {
-    min-height: 64px;
-    padding: 12px 28px;
-    display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: flex-start;
-    color: #ffffff;
-    background:
-      linear-gradient(
-        105deg,
-        #451522 0%,
-        #642238 56%,
-        #7a3048 100%
-      );
-    border-bottom: 4px solid #c9a45c;
-    font-family:
-      "Amiri",
-      "Noto Naskh Arabic",
-      serif;
-    font-size: 28px;
-    line-height: 1.4;
-    font-weight: 700;
+    gap: 18px;
+    direction: rtl;
+    z-index: 4;
   }
 
-  .person-body {
-    min-height: 128px;
-    padding: 22px 30px;
-    display: grid;
-    grid-template-columns: 1.55fr 0.75fr;
-    gap: 20px;
+  .weekly-logo-box {
+    width: 88px;
+    height: 88px;
+    flex: 0 0 88px;
+    border-radius: 22px;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 48, 120, .20);
   }
 
-  .person-block {
-    min-width: 0;
-    padding: 15px 22px;
-    border: 1px solid #eadfca;
-    border-radius: 20px;
-    background:
-      linear-gradient(
-        180deg,
-        #fffefb 0%,
-        #faf6ee 100%
-      );
+  .weekly-logo {
+    width: 78px;
+    height: 78px;
+    object-fit: contain;
+    border-radius: 16px;
   }
 
-  .person-label {
-    color: #927c70;
-    font-size: 17px;
-    line-height: 1.35;
-    font-weight: 700;
-  }
-
-  .person-value {
-    margin-top: 5px;
-    color: #541c2c;
-    font-family:
-      "Amiri",
-      "Noto Naskh Arabic",
-      serif;
-    font-size: 29px;
-    line-height: 1.35;
-    font-weight: 700;
-  }
-
-  .person-value.ltr {
-    text-align: right;
-    font-family:
-      "Roboto",
-      "Noto Sans",
-      Arial,
-      sans-serif !important;
-    font-size: 25px;
+  .weekly-logo-fallback {
+    color: #075ee8;
+    font-family: Arial, sans-serif;
+    font-size: 23px;
     font-weight: 900;
   }
 
-  /* =======================================================
-     ACCOUNT SUMMARY
-  ======================================================= */
-
-  .summary-grid {
-    min-height: 282px;
-    padding: 28px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    background:
-      linear-gradient(
-        180deg,
-        #ffffff 0%,
-        #fdfbf7 100%
-      );
+  .weekly-company-name {
+    max-width: 290px;
+    color: #ffffff;
+    font-size: 29px;
+    line-height: 1.45;
+    font-weight: 900;
+    text-align: right;
+    text-shadow: 0 2px 6px rgba(0,0,0,.14);
   }
 
-  .summary-card {
-    min-width: 0;
-    min-height: 218px;
-    padding: 24px 16px 20px;
-    border: 1.5px solid #e6d9c5;
-    border-radius: 24px;
-    position: relative;
-    overflow: hidden;
-    text-align: center;
-    background: #ffffff;
-    box-shadow:
-      0 9px 22px rgba(64, 33, 40, 0.055);
-  }
-
-  .summary-card::before {
-    content: "";
+  .head-title {
     position: absolute;
     top: 0;
     left: 20px;
-    right: 20px;
-    height: 4px;
-    border-radius: 0 0 8px 8px;
+    width: 560px;
+    text-align: right;
   }
 
-  .summary-card.remaining {
-    border-color: #e9c7c5;
-    background:
-      linear-gradient(
-        180deg,
-        #ffffff 0%,
-        #fff7f6 100%
-      );
-  }
-
-  .summary-card.remaining::before {
-    background: #a8434a;
-  }
-
-  .summary-card.debt {
-    border-color: #ead8ad;
-    background:
-      linear-gradient(
-        180deg,
-        #ffffff 0%,
-        #fffaf0 100%
-      );
-  }
-
-  .summary-card.debt::before {
-    background: #c1943e;
-  }
-
-  .summary-card.paid {
-    border-color: #c7dfd2;
-    background:
-      linear-gradient(
-        180deg,
-        #ffffff 0%,
-        #f3faf6 100%
-      );
-  }
-
-  .summary-card.paid::before {
-    background: #438765;
-  }
-
-  .summary-label {
-    color: #675b57;
-    font-family:
-      "Amiri",
-      "Noto Naskh Arabic",
-      serif;
-    font-size: 23px;
-    line-height: 1.4;
-    font-weight: 700;
-  }
-
-  .summary-value {
-    margin-top: 17px;
-    color: #541c2c;
-    font-size: 39px;
-    line-height: 1.15;
+  .head-title h1 {
+    margin: 0;
+    color: #075a92;
+    font-size: 48px;
+    line-height: 1.35;
     font-weight: 900;
-    white-space: nowrap;
   }
 
-  .summary-currency {
-    margin-top: 8px;
-    color: #8d7a6f;
-    font-size: 17px;
-    line-height: 1.2;
+  .head-title p {
+    margin: 8px 0 0;
+    color: #147a98;
+    font-size: 27px;
+    line-height: 1.6;
     font-weight: 800;
   }
 
-  .summary-card.debt .summary-value,
-  .summary-card.debt .summary-currency {
-    color: #9b6a19;
+  .title-line {
+    position: absolute;
+    top: 145px;
+    left: 0;
+    width: 465px;
+    height: 2px;
+    background: #1687b5;
   }
 
-  .summary-card.paid .summary-value,
-  .summary-card.paid .summary-currency {
-    color: #337753;
-  }
-
-  .summary-card.remaining .summary-value,
-  .summary-card.remaining .summary-currency {
-    color: #9d3540;
-  }
-
-  .summary-icon {
-    width: 38px;
-    height: 38px;
-    margin: 16px auto 0;
+  .title-line::after {
+    content: "";
+    position: absolute;
+    right: -5px;
+    top: -4px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
+    background: #1687b5;
+  }
+
+  .meta-card {
+    position: absolute;
+    top: 150px;
+    right: 8px;
+    width: 392px;
+    min-height: 150px;
+    border: 2px solid #d0dce8;
+    border-radius: 23px;
+    background: #fbfdff;
+    padding: 22px 30px;
+    direction: rtl;
+  }
+
+  .meta-row {
+    display: grid;
+    grid-template-columns: 105px 1fr;
+    align-items: center;
+    min-height: 38px;
+    gap: 10px;
+  }
+
+  .meta-label {
+    color: #637087;
+    font-size: 20px;
+    font-weight: 800;
+    text-align: right;
+  }
+
+  .meta-value {
+    direction: ltr;
+    text-align: left;
+    color: #173c69;
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+    font-weight: 900;
+  }
+
+  .panel {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    border: 2px solid #cad9e8;
+    border-radius: 25px;
+    overflow: hidden;
+    background: #ffffff;
+  }
+
+  .panel-title {
+    height: 62px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font: 900 15px/1 "Roboto", Arial, sans-serif;
-  }
-
-  .remaining .summary-icon {
-    color: #9d3540;
-    background: #f9e4e5;
-  }
-
-  .debt .summary-icon {
-    color: #9b6a19;
-    background: #fff0cb;
-  }
-
-  .paid .summary-icon {
-    color: #337753;
-    background: #e2f2e9;
-  }
-
-  /* =======================================================
-     NOTE
-  ======================================================= */
-
-  .note-card {
-    min-height: 156px;
-    margin-top: 25px;
-    padding: 22px 32px 20px;
-    border: 1.5px solid #dfcfaa;
-    border-radius: 25px;
-    background:
-      linear-gradient(
-        110deg,
-        #fffdf8 0%,
-        #faf5e9 100%
-      );
-    box-shadow:
-      0 10px 26px rgba(84, 55, 18, 0.055);
+    background: linear-gradient(90deg, #0a559a 0%, #07437e 100%);
+    color: #ffffff;
+    font-size: 27px;
+    font-weight: 900;
     text-align: center;
   }
 
-  .note-title {
-    color: #8e6419;
-    font-family:
-      "Amiri",
-      "Noto Naskh Arabic",
-      serif;
-    font-size: 25px;
-    line-height: 1.35;
+  .person-panel {
+    min-height: 170px;
+  }
+
+  .person-body {
+    min-height: 108px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 18px 60px;
+  }
+
+  .person-block {
+    text-align: center;
+  }
+
+  .person-label {
+    color: #65748a;
+    font-size: 19px;
     font-weight: 700;
+    margin-bottom: 8px;
   }
 
-  .note-text {
-    margin-top: 7px;
-    color: #514b47;
-    font-size: 20px;
-    line-height: 1.65;
-    font-weight: 700;
+  .person-value {
+    color: #183f6f;
+    font-size: 28px;
+    font-weight: 900;
   }
 
-  .note-line {
-    width: 105px;
-    height: 2px;
-    margin: 9px auto 0;
-    background:
-      linear-gradient(
-        90deg,
-        transparent,
-        #c9a45c,
-        transparent
-      );
+  .person-value.ltr {
+    direction: ltr;
+    font-family: Arial, sans-serif;
   }
 
-  .thanks {
-    margin-top: 5px;
-    color: #541c2c;
-    font-family:
-      "Amiri",
-      "Noto Naskh Arabic",
-      serif;
-    font-size: 20px;
-    line-height: 1.3;
-    font-weight: 700;
+  .account-panel {
+    margin-top: 48px;
+    min-height: 390px;
   }
 
-  /* =======================================================
-     THIN LUXURY FOOTER
-  ======================================================= */
+  .summary-grid {
+    min-height: 326px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    padding: 38px 28px 34px;
+    direction: rtl;
+  }
 
-  .luxury-footer {
-    position: absolute;
-    z-index: 10;
-    left: 70px;
-    right: 70px;
-    bottom: 28px;
-    height: 78px;
-    padding: 9px 26px;
+  .summary-card {
+    min-height: 240px;
+    border: 2px solid #d4dee9;
+    border-radius: 24px;
+    background: #ffffff;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    border: 1px solid rgba(201, 164, 92, 0.78);
-    border-top: 3px solid #c9a45c;
-    border-radius: 18px;
-    background:
-      linear-gradient(
-        105deg,
-        #351018 0%,
-        #541c2c 52%,
-        #6d263b 100%
-      );
-    box-shadow:
-      0 10px 28px rgba(57, 19, 30, 0.20),
-      inset 0 1px 0 rgba(255, 255, 255, 0.10);
-    color: #ffffff;
+    padding: 18px 12px;
   }
 
-  .luxury-footer::before,
-  .luxury-footer::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    width: 78px;
-    height: 1px;
-  }
-
-  .luxury-footer::before {
-    right: 24px;
-    background:
-      linear-gradient(
-        90deg,
-        #d7b768,
-        transparent
-      );
-  }
-
-  .luxury-footer::after {
-    left: 24px;
-    background:
-      linear-gradient(
-        90deg,
-        transparent,
-        #d7b768
-      );
-  }
-
-  .footer-system {
-    color: #e6cb8b;
-    font-family:
-      "Roboto",
-      "Noto Sans",
-      Arial,
-      sans-serif;
-    font-size: 14px;
-    line-height: 1.1;
+  .summary-label {
+    font-size: 24px;
     font-weight: 900;
-    letter-spacing: 2px;
-    direction: ltr;
+    line-height: 1.5;
   }
 
-  .footer-credit {
-    margin-top: 4px;
-    color: #ffffff;
-    font-family:
-      "Amiri",
-      "Noto Naskh Arabic",
-      serif;
-    font-size: 22px;
-    line-height: 1.25;
+  .summary-value {
+    margin-top: 10px;
+    direction: ltr;
+    font-family: Arial, sans-serif;
+    font-size: 48px;
+    line-height: 1.15;
+    font-weight: 900;
+  }
+
+  .summary-currency {
+    margin-top: 6px;
+    direction: ltr;
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+    font-weight: 900;
+  }
+
+  .summary-icon {
+    margin-top: 16px;
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, sans-serif;
+    font-size: 30px;
+    font-weight: 900;
+  }
+
+  .remaining .summary-label,
+  .remaining .summary-value,
+  .remaining .summary-currency {
+    color: #cc2027;
+  }
+
+  .remaining .summary-icon {
+    color: #cc2027;
+    background: #fde8e8;
+  }
+
+  .debt .summary-label,
+  .debt .summary-value,
+  .debt .summary-currency {
+    color: #0871c8;
+  }
+
+  .debt .summary-icon {
+    color: #0871c8;
+    background: #e9f3ff;
+  }
+
+  .paid .summary-label,
+  .paid .summary-value,
+  .paid .summary-currency {
+    color: #15925b;
+  }
+
+  .paid .summary-icon {
+    color: #15925b;
+    background: #e7f7ef;
+  }
+
+  .note-card {
+    position: relative;
+    z-index: 2;
+    margin-top: 40px;
+    min-height: 185px;
+    border: 2px solid #268ac4;
+    border-radius: 25px;
+    background: #ffffff;
+    padding: 26px 50px 18px;
+    text-align: right;
+    direction: rtl;
+  }
+
+  .note-title {
+    color: #09699f;
+    font-size: 24px;
+    font-weight: 900;
+  }
+
+  .note-text {
+    margin-top: 18px;
+    color: #35485e;
+    font-size: 23px;
+    line-height: 1.75;
     font-weight: 700;
   }
 
-  .footer-gold-dot {
-    color: #d8b867;
-    padding: 0 7px;
+  .note-line {
+    margin-top: 25px;
+    border-top: 2px dashed #d3dde7;
   }
 
-  .frame-line {
-    position: absolute;
-    pointer-events: none;
-    z-index: 1;
-    left: 18px;
-    right: 18px;
-    top: 18px;
-    bottom: 18px;
-    border: 1px solid rgba(201, 164, 92, 0.28);
-    border-radius: 24px;
+  .thanks {
+    margin-top: 10px;
+    text-align: center;
+    color: #176596;
+    font-size: 23px;
+    font-weight: 900;
   }
+
+  .weekly-watermark {
+    position: absolute;
+    z-index: 1;
+    left: 50%;
+    top: 49%;
+    width: 470px;
+    height: 650px;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    opacity: .075;
+  }
+
+  .weekly-watermark img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: grayscale(10%);
+  }
+
+  .report-head,
+  .panel,
+  .note-card {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Bottom geometric background from the supplied reference */
+  /* Exact smooth footer from the reference:
+     full blue base + curved top edge + thin purple rim */
+  .bottom-purple {
+    position: absolute;
+    left: -3%;
+    right: -3%;
+    bottom: 156px;
+    height: 78px;
+    background: #c45ab6;
+    border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+    z-index: 2;
+  }
+
+  .bottom-blue {
+    position: absolute;
+    left: -3%;
+    right: -3%;
+    bottom: 0;
+    height: 215px;
+    background: linear-gradient(105deg,#24399e,#075bc7 52%,#05a9ec);
+    border-radius: 50% 50% 0 0 / 28% 28% 0 0;
+    z-index: 3;
+    overflow: hidden;
+  }
+
+  .bottom-blue::before {
+    content: "";
+    position: absolute;
+    left: -2%;
+    right: -2%;
+    top: -14px;
+    height: 28px;
+    background: #c45ab6;
+    border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+    z-index: 1;
+  }
+
+  .bottom-blue::after {
+    content: "";
+    position: absolute;
+    right: -110px;
+    bottom: -70px;
+    width: 610px;
+    height: 190px;
+    background: rgba(0, 70, 190, .30);
+    transform: rotate(-11deg);
+    z-index: 0;
+  }
+
+  .footer-brand {
+    position: absolute;
+    z-index: 6;
+    left: 35px;
+    right: 35px;
+    bottom: 18px;
+    height: 132px;
+    padding: 8px 20px 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    direction: rtl;
+    color: #ffffff;
+    font-family: Tahoma, "Segoe UI", Arial, sans-serif;
+    font-size: 36px;
+    line-height: 1.42;
+    font-weight: 900;
+    text-shadow: 0 2px 5px rgba(0,0,0,.16);
+  }
+
+  .date-only-card {
+    min-height: 82px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .date-only-card .meta-row {
+    min-height: 38px;
+  }
+
+
+
+  /* ===== FINAL WEEKLY HEADER + BIGGER PASHTO + SHORTER FOOTER =====
+     Only the 7-day/weekly report is affected. Receipt and full report stay untouched. */
+
+  /* Header geometry matched to the supplied blue/purple reference */
+  .weekly-reference .top-purple {
+    top: -34px !important;
+    right: -78px !important;
+    width: 900px !important;
+    height: 276px !important;
+    background: linear-gradient(110deg,#d59ace 0%,#c96bbd 100%) !important;
+    clip-path: polygon(10% 0,100% 0,100% 60%,64% 100%,0 16%) !important;
+  }
+
+  .weekly-reference .top-blue {
+    top: -72px !important;
+    right: -112px !important;
+    width: 915px !important;
+    height: 294px !important;
+    background: linear-gradient(112deg,#24379f 0%,#0c5fc7 54%,#08a9ea 100%) !important;
+    clip-path: polygon(13% 0,100% 0,100% 61%,64% 94%,0 15%) !important;
+  }
+
+  .weekly-reference .top-blue-inner {
+    top: -52px !important;
+    right: -28px !important;
+    width: 845px !important;
+    height: 246px !important;
+    background: linear-gradient(112deg,#25359d 0%,#0b63c9 56%,#0aa9e8 100%) !important;
+    clip-path: polygon(13% 0,100% 0,100% 58%,65% 90%,0 12%) !important;
+  }
+
+  .weekly-reference .top-accent {
+    top: 176px !important;
+    right: 44px !important;
+    width: 230px !important;
+    height: 20px !important;
+    background: linear-gradient(90deg,#d681cc 0%,#b85eb4 100%) !important;
+    transform: rotate(-8deg) !important;
+  }
+
+  .weekly-reference .report-head {
+    min-height: 330px !important;
+  }
+
+  .weekly-reference .head-title {
+    top: 42px !important;
+    left: 26px !important;
+    width: 600px !important;
+    text-align: right !important;
+  }
+
+  .weekly-reference .head-title h1 {
+    font-size: 66px !important;
+    line-height: 1.28 !important;
+    font-weight: 900 !important;
+    color: #0b638e !important;
+  }
+
+  .weekly-reference .head-title p {
+    margin-top: 6px !important;
+    font-size: 31px !important;
+    line-height: 1.45 !important;
+    font-weight: 800 !important;
+    color: #147997 !important;
+  }
+
+  .weekly-reference .title-line {
+    top: 196px !important;
+    left: 0 !important;
+    width: 505px !important;
+    height: 3px !important;
+  }
+
+  .weekly-reference .title-line::after {
+    width: 12px !important;
+    height: 12px !important;
+    top: -5px !important;
+  }
+
+  .weekly-reference .meta-card {
+    top: 206px !important;
+    right: 8px !important;
+    min-height: 100px !important;
+    padding: 15px 28px !important;
+  }
+
+  .weekly-reference .meta-row {
+    min-height: 66px !important;
+  }
+
+  /* Slightly bigger Pashto text everywhere in the weekly report */
+  .weekly-reference .meta-label {
+    font-size: 24px !important;
+    font-weight: 800 !important;
+  }
+
+  .weekly-reference .meta-value {
+    font-size: 23px !important;
+  }
+
+  .weekly-reference .panel-title {
+    height: 68px !important;
+    font-size: 32px !important;
+    font-weight: 900 !important;
+  }
+
+  .weekly-reference .person-label {
+    font-size: 24px !important;
+    font-weight: 800 !important;
+  }
+
+  .weekly-reference .person-value:not(.weekly-latin) {
+    font-size: 33px !important;
+    font-weight: 900 !important;
+  }
+
+  .weekly-reference .summary-label {
+    font-size: 29px !important;
+    line-height: 1.45 !important;
+    font-weight: 900 !important;
+  }
+
+  .weekly-reference .summary-value {
+    font-size: 52px !important;
+    font-weight: 900 !important;
+  }
+
+  .weekly-reference .summary-currency {
+    font-size: 22px !important;
+    font-weight: 900 !important;
+  }
+
+  .weekly-reference .note-card {
+    margin-top: 30px !important;
+    min-height: 170px !important;
+    padding: 20px 42px 14px !important;
+  }
+
+  .weekly-reference .note-title {
+    font-size: 29px !important;
+    font-weight: 900 !important;
+  }
+
+  .weekly-reference .note-text {
+    margin-top: 10px !important;
+    font-size: 26px !important;
+    line-height: 1.62 !important;
+    font-weight: 700 !important;
+  }
+
+  .weekly-reference .note-line {
+    margin-top: 12px !important;
+  }
+
+  .weekly-reference .thanks {
+    margin-top: 6px !important;
+    font-size: 25px !important;
+    font-weight: 900 !important;
+  }
+
+  /* Shorter footer so the note text remains fully visible */
+  .weekly-reference .bottom-blue {
+    height: 132px !important;
+    border-radius: 50% 50% 0 0 / 32% 32% 0 0 !important;
+  }
+
+  .weekly-reference .bottom-blue::before {
+    top: -9px !important;
+    height: 18px !important;
+  }
+
+  .weekly-reference .bottom-blue::after {
+    height: 125px !important;
+    bottom: -48px !important;
+  }
+
+  .weekly-reference .bottom-purple {
+    bottom: 92px !important;
+    height: 42px !important;
+  }
+
+  .weekly-reference .footer-brand {
+    left: 28px !important;
+    right: 28px !important;
+    bottom: 4px !important;
+    height: 62px !important;
+    padding: 1px 16px !important;
+    line-height: 1.15 !important;
+  }
+
+  .weekly-reference .footer-brand div:first-child {
+    font-size: 30px !important;
+    line-height: 1.18 !important;
+    font-weight: 900 !important;
+  }
+
+  .weekly-reference .footer-brand div:last-child {
+    font-size: 18px !important;
+    line-height: 1.2 !important;
+    margin-top: 0 !important;
+    font-weight: 700 !important;
+  }
+
 </style>
 </head>
 
 <body>
 <div id="receipt" class="weekly-reference">
-  <div class="frame-line"></div>
 
-  <header class="premium-header">
-    <div class="header-top">
-      <div class="company-brand">
-        <div class="logo-shell">
-          ${logoHtml}
-        </div>
+  ${
+    companyLogo
+      ? `<div class="weekly-watermark"><img src="${escapeHtml(companyLogo)}" alt="" /></div>`
+      : ""
+  }
 
-        <div class="company-copy">
-          <div class="company-label">رسمي اوونیز حساب</div>
-          <div class="company-name">${escapeHtml(companyName)}</div>
-        </div>
-      </div>
+  <div class="top-purple"></div>
+  <div class="top-blue"></div>
+  <div class="top-blue-inner"></div>
+  <div class="top-accent"></div>
 
-      <div class="date-badge">
-        <div class="date-label">د راپور نېټه</div>
-        <div class="date-value weekly-latin" lang="en" dir="ltr">
-          ${escapeHtml(toLatinDigits(reportDate))}
-        </div>
-      </div>
-    </div>
+  <section class="report-head">
 
-    <div class="header-title">
+    <div class="head-title">
       <h1>${escapeHtml(reportTitle)}</h1>
-      <p>د مشتری د حساب رسمي اوونیز لنډیز</p>
-      <div class="gold-mark"></div>
+      <p>د مشتری د حساب رسمي راپور</p>
     </div>
-  </header>
 
-  <main class="report-content">
-    <section class="panel person-panel">
-      <div class="panel-title">د شخص معلومات</div>
+    <div class="title-line"></div>
 
-      <div class="person-body">
-        <div class="person-block">
-          <div class="person-label">نوم</div>
-          <div class="person-value">${escapeHtml(customerName)}</div>
-        </div>
-
-        <div class="person-block">
-          <div class="person-label">د حساب واحد</div>
-          <div class="person-value ltr weekly-latin" lang="en" dir="ltr">
-            ${escapeHtml(currencyText)}
-          </div>
-        </div>
+    <div class="meta-card date-only-card">
+      <div class="meta-row">
+        <div class="meta-label">نېټه:</div>
+        <div class="meta-value weekly-latin" lang="en" dir="ltr">${escapeHtml(toLatinDigits(reportDate))}</div>
       </div>
-    </section>
-
-    <section class="panel account-panel">
-      <div class="panel-title">د حساب لنډیز</div>
-
-      <div class="summary-grid">
-        <div class="summary-card remaining">
-          <div class="summary-label">باقي قرض</div>
-          <div class="summary-value weekly-latin" lang="en" dir="ltr">
-            ${escapeHtml(remainingText)}
-          </div>
-          <div class="summary-currency weekly-latin" lang="en" dir="ltr">
-            ${escapeHtml(currencyText)}
-          </div>
-          <div class="summary-icon">R</div>
-        </div>
-
-        <div class="summary-card debt">
-          <div class="summary-label">ټول قرض</div>
-          <div class="summary-value weekly-latin" lang="en" dir="ltr">
-            ${escapeHtml(totalDebtText)}
-          </div>
-          <div class="summary-currency weekly-latin" lang="en" dir="ltr">
-            ${escapeHtml(currencyText)}
-          </div>
-          <div class="summary-icon">D</div>
-        </div>
-
-        <div class="summary-card paid">
-          <div class="summary-label">وصول شوي</div>
-          <div class="summary-value weekly-latin" lang="en" dir="ltr">
-            ${escapeHtml(totalPaidText)}
-          </div>
-          <div class="summary-currency weekly-latin" lang="en" dir="ltr">
-            ${escapeHtml(currencyText)}
-          </div>
-          <div class="summary-icon">P</div>
-        </div>
-      </div>
-    </section>
-
-    <section class="note-card">
-      <div class="note-title">یادونه</div>
-      <div class="note-text">
-        مهرباني وکړئ د فرصت په صورت کې خپل حساب تصفیه کړئ.
-      </div>
-      <div class="note-line"></div>
-      <div class="thanks">مننه</div>
-    </section>
-  </main>
-
-  <footer class="luxury-footer">
-    <div class="footer-system">AZI SYSTEM</div>
-    <div class="footer-credit">
-      AZI SYSTEM
-      <span class="footer-gold-dot">—</span>
-      طرحه، انجینري او پراختیا: عزیزالله نیازی
     </div>
-  </footer>
+  </section>
+
+  <section class="panel person-panel">
+    <div class="panel-title">د شخص معلومات</div>
+    <div class="person-body">
+      <div class="person-block">
+        <div class="person-label">نوم</div>
+        <div class="person-value">${escapeHtml(customerName)}</div>
+      </div>
+
+      <div class="person-block">
+        <div class="person-label">د حساب واحد</div>
+        <div class="person-value ltr weekly-latin" lang="en" dir="ltr">${escapeHtml(currencyText)}</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel account-panel">
+    <div class="panel-title">د حساب لنډیز</div>
+
+    <div class="summary-grid">
+      <div class="summary-card remaining">
+        <div class="summary-label">باقي قرض</div>
+        <div class="summary-value weekly-latin" lang="en" dir="ltr">${escapeHtml(toLatinDigits(remainingText))}</div>
+        <div class="summary-currency weekly-latin" lang="en" dir="ltr">${escapeHtml(currencyText)}</div>
+        <div class="summary-icon">◉</div>
+      </div>
+
+      <div class="summary-card debt">
+        <div class="summary-label">ټول قرض</div>
+        <div class="summary-value weekly-latin" lang="en" dir="ltr">${escapeHtml(toLatinDigits(totalDebtText))}</div>
+        <div class="summary-currency weekly-latin" lang="en" dir="ltr">${escapeHtml(currencyText)}</div>
+        <div class="summary-icon">▣</div>
+      </div>
+
+      <div class="summary-card paid">
+        <div class="summary-label">وصول شوي</div>
+        <div class="summary-value weekly-latin" lang="en" dir="ltr">${escapeHtml(toLatinDigits(totalPaidText))}</div>
+        <div class="summary-currency weekly-latin" lang="en" dir="ltr">${escapeHtml(currencyText)}</div>
+        <div class="summary-icon">▱</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="note-card">
+    <div class="note-title">یادونه</div>
+    <div class="note-text">
+      مهرباني وکړئ د فرصت په صورت کې خپل حساب تصفیه کړئ.
+    </div>
+    <div class="note-line"></div>
+    <div class="thanks">مننه</div>
+  </section>
+
+  <div class="bottom-purple"></div>
+  <div class="bottom-blue"></div>
+
+  <div class="footer-brand">
+    <div style="font-size:36px;font-weight:900">${escapeHtml(companyName)}</div>
+    <div style="font-size:21px;font-weight:700;margin-top:4px">${escapeHtml(company.address || company.shop_address || "")}</div>
+  </div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
 </div>
 </body>
 </html>
@@ -4107,7 +4178,7 @@ tr {
 </style></head><body><div class="page">
 ${companyLogo?`<div class="watermark"><img src="${escapeHtml(companyLogo)}"/></div>`:""}
 <div class="content">
-<header class="header">${companyLogo?`<img class="logo" src="${escapeHtml(companyLogo)}"/>`:""}<div class="shop">عمده فروشی فیض احمد و عزیزالله نیازی</div><div class="address">کابل، سرای احمدشاهی، دکان 174</div></header>
+<header class="header">${companyLogo?`<img class="logo" src="${escapeHtml(companyLogo)}"/>`:""}<div class="shop">فضل د مریو او کرستالو عمده پلورنځی</div><div class="address">${escapeHtml(companyAddress)}</div></header>
 <section class="title"><h1>د مشتری بشپړ حسابي راپور</h1><div class="line"></div></section>
 <div class="datebox"><span>نیټه:</span><span class="ltr full-report-latin" lang="en" dir="ltr">${escapeHtml(toLatinDigits(reportDate))}</span></div>
 <section class="section"><div class="section-title">د حساب معلومات</div><div class="info">
