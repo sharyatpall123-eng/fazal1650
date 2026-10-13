@@ -6650,7 +6650,7 @@ export async function sendPaymentReceipt(
 
 
 
-        `ستاسو د وصولۍ رسید په بریالیتوب سره درولېږل شو.\n` +
+        `ستاسو د وصولۍ رسید د فضل پلورنځي لخوا در واستول شو.\n` +
 
 
 
@@ -6658,7 +6658,7 @@ export async function sendPaymentReceipt(
 
 
 
-        `*K266*`,
+        `*FZL1650*`,
 
 
 
@@ -7122,7 +7122,7 @@ export async function sendWeeklyDebtReport(
 
 
 
-        `ستاسو اوونیز راپور د AZI SYSTEM له لارې په بریالیتوب سره درولېږل شو 📊\n` +
+        `ستاسو اوونیز راپور د فضل پلورنځي لخوا در واستول شو 📊\n` +
 
 
 
@@ -7130,7 +7130,7 @@ export async function sendWeeklyDebtReport(
 
 
 
-        `*K266*`,
+        `*FZL1650*`,
 
 
 
@@ -8002,7 +8002,7 @@ export async function sendFullAccountReport(
 
 
 
-      `ستاسو بشپړ حساب راپور د AZI SYSTEM له لارې په بریالیتوب سره درولېږل شو ✅\n` +
+      `ستاسو بشپړ حساب راپور د فضل پلورنځي لخوا در واستول شو ✅\n` +
 
 
 
@@ -8010,7 +8010,7 @@ export async function sendFullAccountReport(
 
 
 
-      `*K266*`,
+      `*FZL1650*`,
 
 
 
@@ -8178,7 +8178,7 @@ export async function sendTestWhatsAppMessage(
 
 
 
-  text = "AZI WMS WhatsApp Test ✅"
+  text = "فضل پلورنځی WhatsApp Test ✅"
 
 
 
@@ -8302,7 +8302,7 @@ export async function sendWhatsAppTestMessage({ to, text }) {
 
 
 
-    "السلام علیکم، دا د AZI System د WhatsApp اتومات سیستم ازمایښتي پیغام دی.";
+    "السلام علیکم، دا د فضل پلورنځي د WhatsApp اتومات سیستم ازمایښتي پیغام دی.";
 
 
 
