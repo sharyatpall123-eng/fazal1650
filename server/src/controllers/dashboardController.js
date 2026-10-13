@@ -27,7 +27,14 @@ const lastMonthKeys = (count = 8) => {
   });
 };
 
-export const getDashboard = asyncHandler(async (request, response) => {
+// This dashboard aggregates several database tables. Briefly share the
+// same result between authorized dashboard reads instead of repeating
+// expensive queries for every tab/device opened at once.
+const DASHBOARD_CACHE_MS = 10_000;
+let dashboardCache = null;
+let dashboardPending = null;
+
+async function buildDashboardData() {
   // One compact endpoint replaces several browser requests and avoids the
   // representative N+1 query pattern on the dashboard.
   const [
@@ -187,20 +194,36 @@ export const getDashboard = asyncHandler(async (request, response) => {
     receivedPercent: row.received > 0 ? Math.max(4, Math.round((row.received / maxActivity) * 100)) : 0,
   }));
 
-  return sendData(
-    response,
-    {
-      summary: {
-        totalWarehouses: warehousesResult.error ? 0 : warehousesResult.count || 0,
-        stockIn,
-        stockOut,
-        netBalance,
-        lowStock,
-      },
-      recentMovements,
-      companyDistribution,
-      creditComparison,
+  return {
+    summary: {
+      totalWarehouses: warehousesResult.error ? 0 : warehousesResult.count || 0,
+      stockIn,
+      stockOut,
+      netBalance,
+      lowStock,
     },
-    "Dashboard loaded",
-  );
+    recentMovements,
+    companyDistribution,
+    creditComparison,
+  };
+}
+
+export const getDashboard = asyncHandler(async (request, response) => {
+  if (dashboardCache && Date.now() - dashboardCache.savedAt < DASHBOARD_CACHE_MS) {
+    return sendData(response, dashboardCache.data, "Dashboard loaded");
+  }
+
+  if (!dashboardPending) {
+    dashboardPending = buildDashboardData()
+      .then((data) => {
+        dashboardCache = { data, savedAt: Date.now() };
+        return data;
+      })
+      .finally(() => {
+        dashboardPending = null;
+      });
+  }
+
+  const data = await dashboardPending;
+  return sendData(response, data, "Dashboard loaded");
 });
